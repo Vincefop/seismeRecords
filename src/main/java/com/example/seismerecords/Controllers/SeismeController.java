@@ -1,10 +1,9 @@
 package com.example.seismerecords.Controllers;
 
-import com.example.seismerecords.dtos.SeismeDTO;
+import com.example.seismerecords.dtos.seismeDTOs.SeismeDTO;
+import com.example.seismerecords.dtos.seismeDTOs.SeismeSaveDTO;
 import com.example.seismerecords.services.SeismeService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,5 +20,10 @@ public class SeismeController {
     @GetMapping
     public List<SeismeDTO> findAll(){
         return seismeService.findAll();
+    }
+
+    @PostMapping
+    public SeismeDTO save(@RequestBody SeismeSaveDTO seismeSaveDTO){
+        return seismeService.save(seismeSaveDTO);
     }
 }

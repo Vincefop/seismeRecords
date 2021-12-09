@@ -1,30 +1,24 @@
-package com.example.seismerecords.entities;
+package com.example.seismerecords.dtos.seismeDTOs;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
+import com.example.seismerecords.dtos.localisationDTOs.LocalisationDTO;
 
 
-@Document
-public class Seisme {
-
-    @Id
+public class SeismeDTO {
     private String id;
     private String nom;
     private float magnetude;
-    @DBRef
-    private Localisation localisation;
+    private LocalisationDTO localisationDTO;
     private String date;
 
-    public Seisme() {
+    public SeismeDTO() {
 
     }
 
-    public Seisme(String id, String nom, float magnetude, Localisation localisation, String date) {
+    public SeismeDTO(String id, String nom, float magnetude, LocalisationDTO localisationDTO, String date) {
         this.id = id;
         this.nom = nom;
         this.magnetude = magnetude;
-        this.localisation = localisation;
+        this.localisationDTO = localisationDTO;
         this.date = date;
     }
 
@@ -52,12 +46,12 @@ public class Seisme {
         this.magnetude = magnetude;
     }
 
-    public Localisation getLocalisation() {
-        return localisation;
+    public LocalisationDTO getLocalisationDTO() {
+        return localisationDTO;
     }
 
-    public void setLocalisation(Localisation localisation) {
-        this.localisation = localisation;
+    public void setLocalisation(LocalisationDTO localisationDTO) {
+        this.localisationDTO = localisationDTO;
     }
 
     public String getDate() {

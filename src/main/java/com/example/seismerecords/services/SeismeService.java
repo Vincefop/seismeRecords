@@ -1,6 +1,7 @@
 package com.example.seismerecords.services;
 
-import com.example.seismerecords.dtos.SeismeDTO;
+import com.example.seismerecords.dtos.seismeDTOs.SeismeDTO;
+import com.example.seismerecords.dtos.seismeDTOs.SeismeSaveDTO;
 import com.example.seismerecords.entities.Seisme;
 import com.example.seismerecords.repositories.SeismeRepository;
 import org.modelmapper.ModelMapper;
@@ -30,6 +31,19 @@ public class SeismeService {
             seismeDTOS.add(modelMapper.map(seisme, SeismeDTO.class));
         });
         return seismeDTOS;
+    }
+
+    /**
+     * Savegarde un seisme sur la bdd
+     * @param seismeSaveDTO
+     * @return le seisme Sauvé
+     */
+    public SeismeDTO save(SeismeSaveDTO seismeSaveDTO){
+        Seisme seismeToSave = modelMapper.map(seismeSaveDTO, Seisme.class);
+        Seisme seismeSaved = seismeRepository.save(seismeToSave);
+        SeismeDTO seismeDTO = modelMapper.map(seismeSaved, SeismeDTO.class);
+        return seismeDTO;
+
     }
 
 
